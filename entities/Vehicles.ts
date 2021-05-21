@@ -1,6 +1,6 @@
 import {
     Entity, Column, PrimaryGeneratedColumn, OneToMany, 
-    BaseEntity, JoinTable
+    BaseEntity
   } from 'typeorm';
   
   import {PeopleVehicle} from "./PeopleVehicle"
@@ -46,6 +46,6 @@ import {
     imageURL: string;
     
     //Relationship with peoplevehicles (one people drive many vehicles)
-    @OneToMany(() => PeopleVehicle, peoplevehicle => peoplevehicle.vehicle_id)
+    @OneToMany(() => PeopleVehicle, peoplevehicle => peoplevehicle.vehicles)
     peoplevehicle: PeopleVehicle[];     
   }

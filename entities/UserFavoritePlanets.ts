@@ -1,17 +1,12 @@
 import {
     Entity, Column, PrimaryGeneratedColumn, ManyToOne,
-    BaseEntity, JoinTable
+    BaseEntity
 } from 'typeorm';
 
 import { User } from "./User"
 import { Planets } from "./Planets"
 @Entity()
-export class UserFavoritePlanets extends BaseEntity {
-    @PrimaryGeneratedColumn()
-    user_id: number;
-    @PrimaryGeneratedColumn()
-    planet_id: number;
-    
+export class UserFavoritePlanets extends BaseEntity {    
     //Relationship with planets(many userfavoriteplanets to one planet)
     @ManyToOne(() => Planets, planet => planet.id)
     planets: Planets;

@@ -24,51 +24,74 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 exports.__esModule = true;
-exports.User = void 0;
+exports.People = void 0;
 var typeorm_1 = require("typeorm");
-var UserFavoritePlanets_1 = require("./UserFavoritePlanets");
-var UserFavoritePeople_1 = require("./UserFavoritePeople");
-var UserFavoriteVehicles_1 = require("./UserFavoriteVehicles");
-var User = /** @class */ (function (_super) {
-    __extends(User, _super);
-    function User() {
+var Planets_1 = require("./Planets");
+var PeopleVehicle_1 = require("./PeopleVehicle");
+var People = /** @class */ (function (_super) {
+    __extends(People, _super);
+    function People() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
         typeorm_1.PrimaryGeneratedColumn(),
         __metadata("design:type", Number)
-    ], User.prototype, "id");
+    ], People.prototype, "id");
     __decorate([
         typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], User.prototype, "first_name");
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], User.prototype, "last_name");
+        __metadata("design:type", Number)
+    ], People.prototype, "planet_id");
     __decorate([
         typeorm_1.Column({ unique: true }),
         __metadata("design:type", String)
-    ], User.prototype, "email");
+    ], People.prototype, "name");
     __decorate([
-        typeorm_1.Column({ unique: true }),
+        typeorm_1.Column(),
+        __metadata("design:type", Number)
+    ], People.prototype, "height");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", Number)
+    ], People.prototype, "mass");
+    __decorate([
+        typeorm_1.Column(),
         __metadata("design:type", String)
-    ], User.prototype, "password");
+    ], People.prototype, "hair_color");
     __decorate([
-        typeorm_1.OneToMany(function () { return UserFavoritePlanets_1.UserFavoritePlanets; }, function (userfavoriteplanets) { return userfavoriteplanets.user; }),
-        __metadata("design:type", Array)
-    ], User.prototype, "userfavoriteplanets");
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], People.prototype, "skin_color");
     __decorate([
-        typeorm_1.OneToMany(function () { return UserFavoritePeople_1.UserFavoritePeople; }, function (userfavoritepeople) { return userfavoritepeople.user; }),
-        __metadata("design:type", Array)
-    ], User.prototype, "userfavoritepeople");
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], People.prototype, "eye_color");
     __decorate([
-        typeorm_1.OneToMany(function () { return UserFavoriteVehicles_1.UserFavoriteVehicles; }, function (userfavoritevehicles) { return userfavoritevehicles.user; }),
+        typeorm_1.Column(),
+        __metadata("design:type", Number)
+    ], People.prototype, "birth_year");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], People.prototype, "gender");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], People.prototype, "homeworld");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], People.prototype, "imageURL");
+    __decorate([
+        typeorm_1.ManyToOne(function () { return Planets_1.Planets; }, function (planets) { return planets.peoples; }),
+        __metadata("design:type", Planets_1.Planets)
+    ], People.prototype, "planets");
+    __decorate([
+        typeorm_1.OneToMany(function () { return PeopleVehicle_1.PeopleVehicle; }, function (peoplevehicle) { return peoplevehicle.vehicles; }),
         __metadata("design:type", Array)
-    ], User.prototype, "userfavoritvehicles");
-    User = __decorate([
+    ], People.prototype, "peoplevehicle");
+    People = __decorate([
         typeorm_1.Entity()
-    ], User);
-    return User;
+    ], People);
+    return People;
 }(typeorm_1.BaseEntity));
-exports.User = User;
+exports.People = People;

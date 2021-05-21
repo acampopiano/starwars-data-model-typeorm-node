@@ -1,17 +1,12 @@
 import {
     Entity, Column, PrimaryGeneratedColumn, ManyToOne,
-    BaseEntity, JoinTable
+    BaseEntity
 } from 'typeorm';
 
 import { People } from "./People"
 import { Vehicles } from "./Vehicles"
 @Entity()
-export class PeopleVehicle extends BaseEntity {
-    @PrimaryGeneratedColumn()
-    people_id: number;
-    @PrimaryGeneratedColumn()
-    vehicle_id: number;
-    
+export class PeopleVehicle extends BaseEntity {        
     //Relationship with people(many peoplevehicle to one people)
     @ManyToOne(() => People, people => people.id)
     people: People;
