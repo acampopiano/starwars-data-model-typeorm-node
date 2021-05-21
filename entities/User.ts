@@ -1,9 +1,12 @@
 import {
-    Entity, Column, PrimaryGeneratedColumn, ManyToMany, 
+    Entity, Column, PrimaryGeneratedColumn, OneToMany, 
     BaseEntity, JoinTable
   } from 'typeorm';
   
-  // import {Planet} from "./Planet"
+  import {UserFavoritePlanets} from "./UserFavoritePlanets";
+  import {UserFavoritePeople} from "./UserFavoritePeople"
+  import {UserFavoriteVehicles} from "./UserFavoriteVehicles"
+
   @Entity()
   export class User extends BaseEntity{
     @PrimaryGeneratedColumn()
@@ -21,8 +24,16 @@ import {
     @Column({unique: true})
     password: string;
   
-    // @ManyToMany(() => Planet)
-    // @JoinTable()
-    // planets: Planet[];
+
+    //Relationship with UserFavoritePlanets (one user like many planets)
+    @OneToMany(() => UserFavoritePlanets, userfavoriteplanets => userfavoriteplanets.user)
+    userfavoriteplanets: UserFavoritePlanets[];
     
+    //Relationship with UserFavoritePeople (one user like many people)
+    @OneToMany(() => UserFavoritePeople, userfavoritepeople => userfavoritepeople.user)
+    userfavoritepeople: UserFavoritePeople[];
+
+    //Relationship with UserFavoriteVehicles (one user like many vehicles)
+    @OneToMany(() => UserFavoriteVehicles, userfavoritevehicles => userfavoritevehicles.user)
+    userfavoritvehicles: UserFavoriteVehicles[];
   }

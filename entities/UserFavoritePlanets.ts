@@ -8,7 +8,7 @@ import { Planets } from "./Planets"
 @Entity()
 export class UserFavoritePlanets extends BaseEntity {
     @PrimaryGeneratedColumn()
-    user_id_id: number;
+    user_id: number;
     @PrimaryGeneratedColumn()
     planet_id: number;
     
