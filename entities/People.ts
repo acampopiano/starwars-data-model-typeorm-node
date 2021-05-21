@@ -4,6 +4,8 @@ import {
   } from 'typeorm';
   
   import {Planets} from "./Planets"
+  import {PeopleVehicle} from "./PeopleVehicle"
+
   @Entity()
   export class People extends BaseEntity{
     @PrimaryGeneratedColumn()
@@ -42,6 +44,11 @@ import {
     @Column()
     imageURL: string;
 
+    //Relationship with planets (many people to one planet)
     @ManyToOne(() => Planets, planets => planets.peoples)
-    planets: Planets;    
+    planets: Planets;   
+    
+    //Relationship with peoplevehicles (one people drive many vehicles)
+    @OneToMany(() => PeopleVehicle, peoplevehicle => peoplevehicle.people_id)
+    peoplevehicle: PeopleVehicle[];       
   }

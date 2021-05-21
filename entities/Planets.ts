@@ -43,7 +43,7 @@ import {
     @Column()
     imageURL: string;
     
-    
+    //Relationship with peple (one planet to many people)
     @OneToMany(() => People, people => people.planet_id)
     peoples: People[];    
   }

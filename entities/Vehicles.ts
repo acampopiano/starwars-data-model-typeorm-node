@@ -3,7 +3,7 @@ import {
     BaseEntity, JoinTable
   } from 'typeorm';
   
-  // import {Planet} from "./Planet"
+  import {PeopleVehicle} from "./PeopleVehicle"
   @Entity()
   export class Vehicles extends BaseEntity{
     @PrimaryGeneratedColumn()
@@ -45,4 +45,7 @@ import {
     @Column()
     imageURL: string;
     
+    //Relationship with peoplevehicles (one people drive many vehicles)
+    @OneToMany(() => PeopleVehicle, peoplevehicle => peoplevehicle.vehicle_id)
+    peoplevehicle: PeopleVehicle[];     
   }
